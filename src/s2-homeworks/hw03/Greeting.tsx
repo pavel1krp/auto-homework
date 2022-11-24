@@ -4,7 +4,7 @@ import GreetingContainer, {pureAddUser} from "./GreetingContainer";
 
 type GreetingPropsType = {
     name: string // need to fix any
-    setNameCallback: any // need to fix any
+    setNameCallback: (e:any)=>void// need to fix any
     addUser: any // need to fix any
     onBlur: any // need to fix any
     onEnter: any // need to fix any

@@ -7,7 +7,15 @@ type GreetingContainerPropsType = {
     addUserCallback: (name:string)=> void // need to fix any
 }
 
-export const pureAddUser = (name: string, setError: (a:string)=>void, setName: any, addUserCallback: any) => {
+export const pureAddUser = (name: string, setError: (a:string)=>void, setName: (n:string)=>void, addUserCallback: (name:string)=> void) => {
+    if(name.trim() == ''){
+        setError('Ошибка! Введите имя!')
+    }
+    setName(name)
+    addUserCallback(name)
+    // console.dir(name.trim())
+    // console.log(addUserCallback)
+    console.log(name)
     // если имя пустое - показать ошибку: setError('Ошибка! Введите имя!'),
     // иначе - добавить юзера при помощи addUserCallback и очистить инпут засетав ''
     // проверить на пустоту можно при помощи метода trim(). К примеру: name.trim() !== ''
@@ -33,9 +41,9 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     const [name, setName] = useState<string>('') // need to fix any
     const [error, setError] = useState<string|null>('') // need to fix any
 
-    const setNameCallback = (e: any) => { // need to fix any
-        setName('some name') // need to fix
-        error && setError('')
+    const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
+        setName(e.currentTarget.value) // need to fix
+        error && setError('invalid string')
     }
     const addUser = () => {
         // это всего лишь функция стрелочник- она всего лишь получает
@@ -56,8 +64,13 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
         pureOnEnter(e, addUser)
     }
 
-    const totalUsers = 0 // need to fix
-    const lastUserName = 'some name' // need to fix
+    const totalUsers = users.length// need to fix
+    let lastUserName
+    console.log(users.length)
+    if(users.length === 0){
+         lastUserName = 'пользователь'
+    } else {lastUserName=users[users.length-1].name}
+
 
     return (
         <Greeting
