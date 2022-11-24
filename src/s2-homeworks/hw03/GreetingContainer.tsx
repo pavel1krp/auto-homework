@@ -44,7 +44,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
         setName(e.currentTarget.value) // need to fix
-        error && setError('invalid string')
+        error && setError('')
     }
     const addUser = () => {
         // это всего лишь функция стрелочник- она всего лишь получает
