@@ -27,6 +27,9 @@
 }
 
 .errorInput {
+    width: 372px;
+    height: 36px;
+    margin-top:9px ;
     border: red 1px solid;
 }
 
