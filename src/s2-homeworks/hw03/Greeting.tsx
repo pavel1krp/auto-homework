@@ -1,8 +1,9 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
+import GreetingContainer, {pureAddUser} from "./GreetingContainer";
 
 type GreetingPropsType = {
-    name: any // need to fix any
+    name: string // need to fix any
     setNameCallback: any // need to fix any
     addUser: any // need to fix any
     onBlur: any // need to fix any
@@ -25,7 +26,7 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
-    const inputClass = s.errorInput // need to fix with (?:)
+    const inputClass = s.errorInput // need to fix with (? s.errorInput : s.input)
 
     return (
         <div id={'hw3-form'} className={s.greetingForm}>
@@ -54,6 +55,11 @@ const Greeting: React.FC<GreetingPropsType> = (
                 <button
                     id={'hw3-button'}
                     onClick={addUser}
+                    // ДАВАЙТЕ ПРОСЛЕДИМ БОЕВОЙ ПУТЬ addUser:
+                    // ОТСЮДА ОН ВСПЛЫВЕТ В КОМПОНЕНТЕ GreetingContainer И ВЫЗОВЕТ pureAddUser->
+                    // А В pureAddUser ЛИБО ВЫДАСТ ОШИБКУ (ЕСЛИ ПУСТОЙ name) ИЛИ ЗАПУТСИТ addUserCallback->
+                    // КОТОРЫЙ ВСПЛЫВЕТ В КОМПОНЕНТЕ <HW3/> И ВЫЗОВЕТ pureAddUserCallback->
+                    // КОТОРЫЙ СОЗДАСТ НОВЫЙ ОБЪЕКТ И ЗАСЕТАЕТ ЕГО В users НЕ ПОТЕРЯВ И СТАРЫХ ЮЗЕРОВ
                     className={s.button}
                     disabled={!name.trim()}
                 >

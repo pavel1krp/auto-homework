@@ -69,7 +69,8 @@ function Affairs(props: AffairsPropsType) {
                     Low
                 </button>
             </div>
-            <div className={s.affairs} >{mappedAffairs}</div>
+            <div className={s.affairs}>{mappedAffairs}
+            </div>
         </div>
     )
 }

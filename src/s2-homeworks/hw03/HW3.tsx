@@ -19,20 +19,23 @@ import GreetingContainer from './GreetingContainer'
 
 // types
 export type UserType = {
-    _id: any // need to fix any
-    name: any // need to fix any
+    _id: string
+    name: string
 }
 
-export const pureAddUserCallback = (name: any, setUsers: any, users: any) => { // need to fix any
-    const user = { // need to fix
-    }
-    setUsers([...users, user])
+export const pureAddUserCallback = (name: string, setUsers: any, users: Array<UserType>) => { // need to fix any
+    let user = {_id: v1(), name: name}
+    setUsers([user,...users])
+        // need to fix
+        // нужно создать новый объект соответствующий типу UserType
+        // и не забыть   сгенеририовать _id и вставить пришедший в функцию name
+    //засетайЮзеров([...старые users, и наш новый user])
 }
 
 const HW3 = () => {
-    const [users, setUsers] = useState<any>([]) // need to fix any
-
-    const addUserCallback = (name: any) => { // need to fix any
+    const [users, setUsers] = useState<Array<UserType>>([]) // need to fix any
+    console.log(users)
+    const addUserCallback = (name: string) => { // need to fix any
         pureAddUserCallback(name, setUsers, users)
     }
 
