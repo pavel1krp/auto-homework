@@ -1,4 +1,5 @@
 .sidebar {
+    width: 100%;
 }
 
 .sidebar.open {
@@ -8,15 +9,25 @@
 }
 
 .nav {
+    display: flex;
+    flex-direction: column;
+    row-gap : 45px;
+    font-size: 22px;
 }
 
 .nav a {
+    text-decoration: none;
+    font-weight: 600;
+    font-family: Montserrat;
+    color: black;
 }
 
 .nav a:hover {
 }
 
 .nav a.active {
+    text-decoration:underline;
+    color: #0059B2;
 }
 .close {
 }
