@@ -16,11 +16,11 @@ function Pages() {
         <div>
             {/*Routes выбирает первый подходящий роут*/}
             <Routes>
-                <Route path={'/'} element={<div></div>} />
-
+                <Route path={'/'} element={<></>} />
+                <Route path={PATH.PRE_JUNIOR} element={<PreJunior />}/>
                 <Route path={PATH.JUNIOR} element={<Junior />}/>
                 <Route path={PATH.JUNIOR_PLUS} element={<JuniorPlus />}/>
-                <Route path={'/error404'} element={<Error404/>}/>
+                <Route path={'/*'} element={<Error404/>}/>
             </Routes>
         </div>
     )
