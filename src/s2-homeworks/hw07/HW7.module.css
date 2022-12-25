@@ -1,2 +1,11 @@
 .container {
+    display: flex;
+    gap: 127px;
+}
+.select-container{
+    display: flex;
+    flex-direction: column;
+}
+.hw7{
+    margin: 274px 0 0 30px;
 }
