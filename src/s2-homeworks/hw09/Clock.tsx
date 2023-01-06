@@ -18,8 +18,7 @@ function Clock() {
     }
 
     const stop = () => {
-        // пишут студенты // поставить часы на паузу, обнулить ид таймера (timerId <- undefined)
-
+        setDate(new Date(restoreState('hw9-date', Date.now())))
     }
 
     const onMouseEnter = () => { // пишут студенты // показать дату если наведена мышка
@@ -28,18 +27,18 @@ function Clock() {
     const onMouseLeave = () => { // пишут студенты // спрятать дату если мышка не наведена
         setShow(!show)
     }
-    let formatter = new Intl.DateTimeFormat("en-US", {
-        year: 'numeric', month: 'numeric', day: 'numeric',
-        hour: 'numeric', minute: 'numeric', second: 'numeric',
-        hour12: false
-
+    let mounth = new Intl.DateTimeFormat("en-US", {
+         month: 'long',
     });
-    const stringTime =   <p>{date.toString()} </p> || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты  //////'date->time'
-    const stringDate = 'date->date' || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем //////'date->date'
+    let day = new Intl.DateTimeFormat("en-US", {
+        day: '2-digit', month: '2-digit', year: 'numeric'
+    });
+    const stringTime ='2'  || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты  //////'date->time'
+    const stringDate = mounth.format(date)|| <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем //////'date->date'
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    const stringDay = formatter.format(date) || <br/> // пишут студенты  ////'date->day'
-    const stringMonth = 'date->month' || <br/> // пишут студенты  //////'date->month'
+    const stringDay =  213|| <br/> // пишут студенты  ////'date->day'
+    const stringMonth =day.format(date)|| <br/> // пишут студенты  //////'date->month'
 
     return (
         <div className={s.clock}>
@@ -73,14 +72,14 @@ function Clock() {
             <div className={s.buttonsContainer}>
                 <SuperButton
                     id={'hw9-button-start'}
-                    disabled={show} // пишут студенты // задизэйблить если таймер запущен
+                    disabled={false} // пишут студенты // задизэйблить если таймер запущен
                     onClick={start}
                 >
                     start
                 </SuperButton>
                 <SuperButton
                     id={'hw9-button-stop'}
-                    disabled={!show} // пишут студенты // задизэйблить если таймер не запущен
+                    disabled={false} // пишут студенты // задизэйблить если таймер не запущен
                     onClick={stop}
                 >
                     stop
