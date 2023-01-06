@@ -4,7 +4,7 @@ import {restoreState} from '../hw06/localStorage/localStorage'
 import s from './Clock.module.css'
 
 function Clock() {
-    setInterval(() => console.log(new Date(restoreState('hw9-date', Date.now()))), 100);
+    // setInterval(() => console.log(new Date(restoreState('hw9-date', Date.now()))), 100);
 
     const [timerId, setTimerId] = useState<number | undefined>(undefined)
     // for autotests // не менять // можно подсунуть в локалСторэдж нужную дату, чтоб увидеть как она отображается
@@ -28,13 +28,18 @@ function Clock() {
     const onMouseLeave = () => { // пишут студенты // спрятать дату если мышка не наведена
         setShow(!show)
     }
+    let formatter = new Intl.DateTimeFormat("en-US", {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric',
+        hour12: false
 
-    const stringTime = 'date->time' || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
-    const stringDate = 'date->date' || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
+    });
+    const stringTime =   <p>{date.toString()} </p> || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты  //////'date->time'
+    const stringDate = 'date->date' || <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем //////'date->date'
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-    const stringDay = 'date->day' || <br/> // пишут студенты
-    const stringMonth = 'date->month' || <br/> // пишут студенты
+    const stringDay = formatter.format(date) || <br/> // пишут студенты  ////'date->day'
+    const stringMonth = 'date->month' || <br/> // пишут студенты  //////'date->month'
 
     return (
         <div className={s.clock}>
@@ -80,7 +85,6 @@ function Clock() {
                 >
                     stop
                 </SuperButton>
-                <p>{date.toString()}</p>
             </div>
         </div>
     )
