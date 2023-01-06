@@ -21,8 +21,8 @@ function Clock() {
 
     const stop = () => {
         setDisabled(!disabled)
+        setDate(new Date)
 
-        setDate(new Date(restoreState('hw9-date', Date.now())))
     }
 
     const onMouseEnter = () => { // пишут студенты // показать дату если наведена мышка
@@ -44,11 +44,11 @@ function Clock() {
         hour:'numeric', minute:'numeric', second:'numeric', hour12:false
     });
     const stringTime =  time.format(date) || <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты  //////'date->time'
-    const stringDate = mounth.format(date)|| <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем //////'date->date'
+    const stringDate = day.format(date)|| <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем //////'date->date'
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
     const stringDay =   dayWeek.format(date) || <br/> // пишут студенты  ////'date->day'
-    const stringMonth =day.format(date)|| <br/> // пишут студенты  //////'date->month'
+    const stringMonth = mounth.format(date)|| <br/> // пишут студенты  //////'date->month'
 
     return (
         <div className={s.clock}>
