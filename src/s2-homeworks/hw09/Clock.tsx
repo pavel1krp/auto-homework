@@ -13,16 +13,15 @@ function Clock() {
     const [disabled, setDisabled] = useState<boolean>(false)
 
     const start = () => {
-        // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
-        // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval)
         setDisabled(!disabled)
-        setInterval(() => setDate(new Date(restoreState('hw9-date', Date.now()))), 100)
+        // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
+        // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval
+        const x = setInterval(() => setDate(new Date(restoreState('hw9-date', Date.now()))) , 10)
+        return x
     }
 
     const stop = () => {
         setDisabled(!disabled)
-        setDate(new Date)
-
     }
 
     const onMouseEnter = () => { // пишут студенты // показать дату если наведена мышка
@@ -34,8 +33,8 @@ function Clock() {
     const mounth = new Intl.DateTimeFormat("en-US", {
          month: 'long',
     });
-    const day = new Intl.DateTimeFormat("en-US", {
-        month: '2-digit',day: '2-digit', year: 'numeric'
+    const day = new Intl.DateTimeFormat("ru", {
+        day: '2-digit',month: '2-digit', year: 'numeric'
     });
     const dayWeek = new Intl.DateTimeFormat("en-US", {
         weekday:'long'
