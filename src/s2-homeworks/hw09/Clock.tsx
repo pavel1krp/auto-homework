@@ -14,14 +14,15 @@ function Clock() {
 
     const start = () => {
         setDisabled(!disabled)
+       const id:number = +setInterval (()=>  setDate(new Date()), 1000)
+        setTimerId(id)
         // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
         // сохранить ид таймера (https://learn.javascript.ru/settimeout-setinterval#setinterval
-        const x = setInterval(() => setDate(new Date(restoreState('hw9-date', Date.now()))) , 10)
-        return x
     }
 
     const stop = () => {
         setDisabled(!disabled)
+        clearInterval(timerId)
     }
 
     const onMouseEnter = () => { // пишут студенты // показать дату если наведена мышка
