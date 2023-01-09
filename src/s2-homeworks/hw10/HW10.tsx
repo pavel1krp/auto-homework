@@ -18,9 +18,7 @@ const HW10 = () => {
     const isLoading = false
 
     const setLoading = () => { // пишет студент // показать крутилку на 1,5 секунд
-        // dispatch
 
-        // setTimeout
     }
 
     return (
