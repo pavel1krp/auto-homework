@@ -1,5 +1,5 @@
 const initState = {
-    isLoading: false,
+    isLoading: true,
 }
 
 export const loadingReducer = (state = initState, action: LoadingActionType): any => { // fix any
