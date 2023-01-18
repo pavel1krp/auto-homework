@@ -18,8 +18,8 @@ function HW11() {
     const change = (event: Event, value: number| number[]) => {
         // пишет студент // если пришёл массив - сохранить значения в оба useState, иначе в первый
         if(Array.isArray(value)){
-            setValue2(value[0])
-            setValue1(value[1])
+            setValue2(value[1])
+            setValue1(value[0])
         }
         else {
             setValue1(value)
@@ -39,6 +39,7 @@ function HW11() {
                             // сделать так чтоб value1 изменялось // пишет студент
                             onChange={change}
                             value={value1}
+                            valueLabelDisplay="auto"
                         />
                     </div>
                     <div className={s.wrapper}>
@@ -48,6 +49,7 @@ function HW11() {
                             // сделать так чтоб value1/2 изменялось // пишет студент
                             value={[value1, value2]}
                             onChange={change}
+                            valueLabelDisplay="auto"
                         />
                         <span id={'hw11-value-2'} className={s.number}>{value2}</span>
                     </div>
