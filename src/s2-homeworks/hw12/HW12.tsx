@@ -23,7 +23,7 @@ const HW12 = () => {
     const themeId = 1
 
     const change = (id: any) => { // дописать функцию
-
+        console.log(id + 222)
     }
 
     useEffect(() => {
@@ -40,8 +40,7 @@ const HW12 = () => {
                 <SuperSelect
                     id={'hw12-select-theme'}
                     className={s.select}
-                    // сделать переключение тем
-
+                    onChange={change}
                 />
             </div>
         </div>
