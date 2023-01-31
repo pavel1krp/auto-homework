@@ -19,8 +19,10 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const send = (x?: boolean | null) => () => {
+        setLoading(true)
         const url =
             x === null
                 ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
@@ -40,9 +42,24 @@ const HW13 = () => {
                 setInfo('')
             })
             .catch((e) => {
-                // дописать
-
+                if(e.response.status === 400){
+                    setCode('Ошибка 400!')
+                    setImage(error400)
+                    setInfo('')
+                }
+                if(e.response.status === 500){
+                    setCode('Ошибка 500!')
+                    setImage(error500)
+                    setText(e.data.info)
+                    setInfo('')
+                }else {
+                setCode('Ошибка 600!')
+                setImage(errorUnknown)
+                setInfo('')}
             })
+            .finally(()=>
+                setLoading(false)
+            )
     }
 
     return (
@@ -55,6 +72,7 @@ const HW13 = () => {
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
+                        disabled={loading}
                         // дописать
 
                     >
@@ -62,8 +80,9 @@ const HW13 = () => {
                     </SuperButton>
                     <SuperButton
                         id={'hw13-send-false'}
-                        onClick={send(false)}
+                        onClick={send(undefined)}
                         xType={'secondary'}
+                        disabled={loading}
                         // дописать
 
                     >
@@ -71,8 +90,9 @@ const HW13 = () => {
                     </SuperButton>
                     <SuperButton
                         id={'hw13-send-undefined'}
-                        onClick={send(undefined)}
+                        onClick={send(false)}
                         xType={'secondary'}
+                        disabled={loading}
                         // дописать
 
                     >
@@ -82,6 +102,7 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
+                        disabled={loading}
                         // дописать
 
                     >
