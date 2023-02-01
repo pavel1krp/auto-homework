@@ -16,12 +16,19 @@
 }
 
 .textContainer{
+    font-weight: 500;
 }
 
 .code {
+    font-size: 30px;
+    line-height: 36px;
 }
 
 .text {
+    font-size: 16px;
+    font-weight: 500;
 }
 .info {
+    font-size: 16px;
+    font-weight: 500;
 }
