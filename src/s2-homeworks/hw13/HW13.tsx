@@ -46,15 +46,15 @@ const HW13 = () => {
                     if (e.response.status === 400) {
                         console.log(e)
                         setCode(e.response.status)
-                        setInfo(e.response.data.errorText)
-                        setText(e.response.data.info)
+                        setInfo(e.response.data.info)
+                        setText(e.response.data.errorText)
                         setImage(error400)
                     }
                     if (e.response.status === 500) {
                         console.log(e)
                         setCode(e.response.status)
-                        setInfo(e.response.data.errorText)
-                        setText(e.response.data.info)
+                        setInfo(e.response.data.info)
+                        setText(e.response.data.errorText)
                         setImage(error500)
                     }
                 if (e.response.status === 0) {
