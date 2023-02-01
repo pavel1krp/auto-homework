@@ -36,28 +36,38 @@ const HW13 = () => {
         axios
             .post(url, {success: x})
             .then((res) => {
+                console.log(res)
                 setCode('Код 200!')
-                setImage(success200)
                 setText(res.data.info)
-                setInfo('')
+                setInfo(res.data.errorText)
+                setImage(success200)
             })
             .catch((e) => {
-                if(e.response.status === 400){
-                    setCode('Ошибка 400!')
-                    setImage(error400)
-                    setInfo('')
+                    if (e.response.status === 400) {
+                        console.log(e)
+                        setCode('Ошибка 400!')
+                        setText(e.response.data.errorText)
+                        setInfo(e.response.data.info)
+                        setImage(error400)
+                    }
+                    if (e.response.status === 500) {
+                        setCode('Ошибка 500!')
+                        setText(e.response.data.errorText)
+                        setInfo(e.response.data.info)
+                        setImage(error500)
+                    }
+                if (e.response.status === 0) {
+                    console.log(e.message)
+                    console.log(e.name)
+                    setCode('Error!')
+                    setImage(errorUnknown)
+                    setText(e.message)
+                    setInfo(e.name)
                 }
-                if(e.response.status === 500){
-                    setCode('Ошибка 500!')
-                    setImage(error500)
-                    setText(e.data.info)
-                    setInfo('')
-                }else {
-                setCode('Ошибка 600!')
-                setImage(errorUnknown)
-                setInfo('')}
-            })
-            .finally(()=>
+
+                }
+            )
+            .finally(() =>
                 setLoading(false)
             )
     }
