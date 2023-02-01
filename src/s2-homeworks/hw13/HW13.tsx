@@ -38,23 +38,23 @@ const HW13 = () => {
             .then((res) => {
                 console.log(res)
                 setCode('Код 200!')
-                setText(res.data.info)
-                setInfo(res.data.errorText)
+                setText(res.data.errorText)
+                setInfo(res.data.info)
                 setImage(success200)
             })
             .catch((e) => {
                     if (e.response.status === 400) {
                         console.log(e)
                         setCode(e.response.status)
-                        setInfo(e.response.data.info)
-                        setText(e.response.data.errorText)
+                        setInfo(e.response.data.errorText)
+                        setText(e.response.data.info)
                         setImage(error400)
                     }
                     if (e.response.status === 500) {
                         console.log(e)
                         setCode(e.response.status)
-                        setInfo(e.response.data.info)
-                        setText(e.response.data.errorText)
+                        setInfo(e.response.data.errorText)
+                        setText(e.response.data.info)
                         setImage(error500)
                     }
                 if (e.response.status === 0) {
