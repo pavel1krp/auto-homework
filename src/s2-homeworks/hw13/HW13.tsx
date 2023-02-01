@@ -45,13 +45,14 @@ const HW13 = () => {
             .catch((e) => {
                     if (e.response.status === 400) {
                         console.log(e)
-                        setCode('Ошибка 400!')
+                        setCode(e.response.status)
                         setInfo(e.response.data.errorText)
                         setText(e.response.data.info)
                         setImage(error400)
                     }
                     if (e.response.status === 500) {
-                        setCode('Ошибка 500!')
+                        console.log(e)
+                        setCode(e.response.status)
                         setInfo(e.response.data.errorText)
                         setText(e.response.data.info)
                         setImage(error500)
