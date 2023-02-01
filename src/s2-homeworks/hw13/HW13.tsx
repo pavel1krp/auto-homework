@@ -45,7 +45,7 @@ const HW13 = () => {
             .catch((e) => {
                     if (e.response.status === 400) {
                         console.log(e)
-                        setCode('Ошибка 400!')
+                        setCode('500')
                         setInfo(e.response.data.errorText)
                         setText(e.response.data.info)
                         setImage(error400)
