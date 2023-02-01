@@ -45,7 +45,7 @@ const HW13 = () => {
             .catch((e) => {
                     if (e.response.status === 400) {
                         console.log(e)
-                        setCode('500')
+                        setCode('Ошибка 400!')
                         setInfo(e.response.data.errorText)
                         setText(e.response.data.info)
                         setImage(error400)
@@ -90,7 +90,7 @@ const HW13 = () => {
                     </SuperButton>
                     <SuperButton
                         id={'hw13-send-false'}
-                        onClick={send(undefined)}
+                        onClick={send(false)}
                         xType={'secondary'}
                         disabled={loading}
                         // дописать
@@ -100,7 +100,7 @@ const HW13 = () => {
                     </SuperButton>
                     <SuperButton
                         id={'hw13-send-undefined'}
-                        onClick={send(false)}
+                        onClick={send(undefined)}
                         xType={'secondary'}
                         disabled={loading}
                         // дописать
