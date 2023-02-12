@@ -11,13 +11,24 @@
 }
 
 .container {
+
 }
 
 .thead {
+    background-color: #E5E5E5;
+    min-height: 36px;
+    font-size: 18px;
+    font-weight: 700;
 }
 
+tr{
+
+}
 .nameCol {
+    min-width: 300px;
+
 }
 
 .ageCol {
+    min-width: 300px;
 }
