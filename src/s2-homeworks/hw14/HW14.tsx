@@ -34,17 +34,16 @@ export const HW14 = () => {
         setLoading(true)
         getTechs(value)
             .then((res) => {
-                // делает студент
-                console.log(res)
-                // сохранить пришедшие данные
-                //
+                res && setTechs(res.data.techs)
+                setLoading(false)
             })
     }
 
     const onChangeText = (value: string) => {
         setFind(value)
         // делает студент
-        setSearchParams(value)
+        setLoading(true)
+        setSearchParams({find:value})
         // добавить/заменить значение в квери урла
         // setSearchParams(
 
@@ -76,7 +75,7 @@ export const HW14 = () => {
                 />
 
                 <div id={'hw14-loading'} className={s.loading}>
-                    {isLoading ? '...ищем' : <div><br/>Hello</div> }
+                    {isLoading ? '...ищем' : <br/>}
                 </div>
 
                 {mappedTechs}
