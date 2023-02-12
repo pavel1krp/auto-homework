@@ -1,7 +1,9 @@
 .tech {
-
+    font-size: 16px;
 }
-
+.container{
+    display: flex;
+}
 .loading {
-
+    margin-left: 120px;
 }

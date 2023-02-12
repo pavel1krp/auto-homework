@@ -34,7 +34,9 @@ export const HW14 = () => {
         setLoading(true)
         getTechs(value)
             .then((res) => {
-                res && setTechs(res.data.techs)
+                if (res) {
+                    setTechs(res.data.techs)
+                }
                 setLoading(false)
             })
     }
@@ -43,7 +45,7 @@ export const HW14 = () => {
         setFind(value)
         // делает студент
         setLoading(true)
-        setSearchParams({find:value})
+        setSearchParams({find: value})
         // добавить/заменить значение в квери урла
         // setSearchParams(
 
@@ -73,12 +75,14 @@ export const HW14 = () => {
                     onChangeText={onChangeText}
                     onDebouncedChange={sendQuery}
                 />
+                <div className={s.container}>
+                    {mappedTechs}
+                    <div id={'hw14-loading'} className={s.loading}>
+                        {isLoading ? '...ищем' : <br/>}
+                    </div>
 
-                <div id={'hw14-loading'} className={s.loading}>
-                    {isLoading ? '...ищем' : <br/>}
+
                 </div>
-
-                {mappedTechs}
             </div>
         </div>
     )
