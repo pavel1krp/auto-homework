@@ -25,9 +25,7 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
 
     const onChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
         console.log('32112')
-    }
-    const onChangeSelect1 =(e:MouseEvent<HTMLSelectElement>)=>{
-
+        alert(event.currentTarget.value)
     }
 
     return (
@@ -56,8 +54,8 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
                     {id: 7, value: 7},
                     {id: 10, value: 10},
                 ]}
-                onClick={onChangeSelect1}
-                onChange={onChangeSelect}
+                onChange={()=>alert(222)}
+                // onClick={()=>alert(222)}
             />
 
             <span className={s.text2}>
