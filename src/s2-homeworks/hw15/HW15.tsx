@@ -65,6 +65,7 @@ const HW15 = () => {
         // делает студент
         setPage(newPage)
         setCount(newCount)
+        console.log(newCount,newPage)
         // setPage(
         // setCount(
 
