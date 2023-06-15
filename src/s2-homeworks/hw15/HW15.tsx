@@ -30,7 +30,7 @@ type ParamsType = {
 const getTechs = (params: ParamsType) => {
     return axios
         .get<{ techs: TechType[], totalCount: number }>(
-            'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test3',
+            'https://samurai.it-incubator.io/api/3.0/homework/test3',
             {params}
         )
         .catch((e) => {
@@ -51,8 +51,6 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
-                console.log(res)
-                setTechs(res? res.data.techs: [])
                 // делает студент
 
                 // сохранить пришедшие данные
@@ -63,9 +61,7 @@ const HW15 = () => {
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-        setPage(newPage)
-        setCount(newCount)
-        console.log(newCount,newPage)
+
         // setPage(
         // setCount(
 
