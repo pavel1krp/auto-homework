@@ -52,6 +52,9 @@ const HW15 = () => {
         getTechs(params)
             .then((res) => {
                 // делает студент
+                if(res){
+                    setTechs(res.data.techs)
+                }
 
                 // сохранить пришедшие данные
 
@@ -61,7 +64,8 @@ const HW15 = () => {
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-
+        setPage(newPage)
+        setCount(newCount)
         // setPage(
         // setCount(
 
